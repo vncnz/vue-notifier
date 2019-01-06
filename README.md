@@ -5,8 +5,8 @@ Vuejs 2.X component to show sequential notifications via bus events. Notificatio
 Notifier accepts events called `notify:error`, `notify:warning`, `notify:info` and `notify:success`, event object can be a string or a complex object as following:
 ```
 {
-    text: String // required, the text of notification
-    key: Any // optional, can be used for notification replacement,
+    text: String    // required, the text of notification
+    key: Any        // optional, can be used for notification replacement,
     timeout: Number // optional, default 5000 ms if type is warning and 3000 ms if type is success or info
 }
 ```
