@@ -1,7 +1,7 @@
 # vue-notifier
 
 Vuejs 2.X component to show sequential notifications.
-See the [DEMO](https://codepen.io/vncnz/pen/yGvbJE){:target="_blank"}.
+See the [DEMO](https://codepen.io/vncnz/pen/yGvbJE).
 
 ## Project setup
 ```
