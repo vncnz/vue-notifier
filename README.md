@@ -1,6 +1,7 @@
 # vue-notifier
 
-Vuejs 2.X component to show sequential notifications.
+Vuejs 2.X component to show sequential notifications via bus events. Notification component is /src/components/Notifier.vue and in this example project /src/components/eventBus.js is the bus Notifier is listeing on.
+
 See the [DEMO](https://codepen.io/vncnz/pen/yGvbJE).
 
 ## Project setup
