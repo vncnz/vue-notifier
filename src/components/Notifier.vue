@@ -220,6 +220,7 @@ $primary: #66C3FF;
 		left: 0;
 		width: 0;
 		background: $black;
+		transition: width 45ms linear;
 	}
 }
 </style>
