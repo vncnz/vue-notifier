@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Notifier from './components/Notifier.vue'
-import EventBus from './components/eventBus'
+import Notifier from './Notifier.vue'
+import EventBus from './eventBus'
 
 export default {
   name: 'app',

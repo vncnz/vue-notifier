@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import EventBus from '@/components/eventBus.js'
+import EventBus from '@/eventBus.js'
 
 export default {
   name: 'Notifier',
@@ -108,7 +108,7 @@ export default {
 					this.timeout = null
 				}
 			} */
-			updateCurrent (tm) {
+			updateCurrent () {
 				this.currentTimestamp = (new Date()).getTime()
 			}
 		},
