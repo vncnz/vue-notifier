@@ -130,13 +130,13 @@ export default {
 		},
 		watch: {
 			current (newV) {
-				console.log('current msg changed')
+				// console.log('current msg changed')
 				if (this.timeout) {
 					clearTimeout(this.timeout)
 					this.timeout = null
 				}
 				if (newV && newV.timeout) {
-					console.log('reset timeout')
+					// console.log('reset timeout')
 					this.timeout = setTimeout(this.goNext, newV.timeout)
 					this.current.showed = (new Date()).getTime()
 				}		
