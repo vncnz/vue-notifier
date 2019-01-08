@@ -3,7 +3,7 @@
     <div>{{current.text || 'Vuoto'}}</div>
     <button @click="goNext">
       <i class="fa fa-close" v-if="isLast">&nbsp;</i>
-      <div v-else-if="count">Next ({{count - 1}})</div>
+      <div v-else-if="count">{{count - 1}}&nbsp;<i class="fa fa-arrow-right">&nbsp;</i></div>
     </button>
 		<div class="progress" :style="{ width: (timePerc * 100) + '%'}"></div>
   </div>
@@ -129,7 +129,11 @@ export default {
 			clearInterval(this.interval)
 		},
 		watch: {
-			current (newV) {
+			current (newV, oldV) {
+				if (newV === oldV) {
+					return
+				}
+				console.log(newV === oldV, newV, oldV)
 				// console.log('current msg changed')
 				if (this.timeout) {
 					clearTimeout(this.timeout)
