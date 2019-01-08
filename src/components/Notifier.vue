@@ -5,6 +5,7 @@
       <i class="fa fa-close" v-if="isLast">&nbsp;</i>
       <div v-else-if="count">Next ({{count - 1}})</div>
     </button>
+		<div class="progress" :style="{ width: (timePerc * 100) + '%'}"></div>
   </div>
 </template>
 
@@ -17,12 +18,20 @@ export default {
 			return {
 				queue: [],
 				changing: false,
-				timeout: null
+				timeout: null,
+				interval: null,
+				currentTimestamp: null
 			}
 		},
 		computed: {
 			current () {
 				return this.queue.length ? this.queue[0] : {}
+			},
+			timePerc () {
+				if (this.current && this.current.showed) {
+					return (this.currentTimestamp - this.current.showed) / this.current.timeout
+				}
+				return 0.5
 			},
 			count () {
 				return this.queue.length
@@ -99,23 +108,38 @@ export default {
 					this.timeout = null
 				}
 			} */
+			updateCurrent (tm) {
+				this.currentTimestamp = (new Date()).getTime()
+			}
 		},
 		mounted () {
 			EventBus.$on('notify:error', this.showError)
 			EventBus.$on('notify:success', this.showSuccess)
 			EventBus.$on('notify:info', this.showInfo)
 			EventBus.$on('notify:warning', this.showWarning)
+
+			this.interval = setInterval(this.updateCurrent, 50)
+		},
+		beforeDestroy () {
+			EventBus.$off('notify:error', this.showError)
+			EventBus.$off('notify:success', this.showSuccess)
+			EventBus.$off('notify:info', this.showInfo)
+			EventBus.$off('notify:warning', this.showWarning)
+
+			clearInterval(this.interval)
 		},
 		watch: {
 			current (newV) {
-				// console.log('current msg changed')
+				console.log('current msg changed')
 				if (this.timeout) {
 					clearTimeout(this.timeout)
 					this.timeout = null
 				}
 				if (newV && newV.timeout) {
+					console.log('reset timeout')
 					this.timeout = setTimeout(this.goNext, newV.timeout)
-				}
+					this.current.showed = (new Date()).getTime()
+				}		
 			}
 		}
 }
@@ -187,6 +211,15 @@ $primary: #66C3FF;
 	&.success {
 		background: $green;
 		color: $white;
+	}
+
+	.progress {
+		position: absolute;
+		bottom: 0;
+		height: 2px;
+		left: 0;
+		width: 0;
+		background: $black;
 	}
 }
 </style>
