@@ -13,7 +13,6 @@ import EventBus from '@/components/eventBus.js'
 
 export default {
   name: 'Notifier',
-  components: { EventBus },
   data () {
 			return {
 				queue: [],
