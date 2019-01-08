@@ -8,6 +8,18 @@
       <button @click="testInfo">Test info</button>
       <button @click="testSuccess">Test success</button>
     </div>
+		<br />
+		<div>
+			<label>
+				<input type="radio" v-model="editPrevious" :value="false" />
+				Create new notify
+			</label>
+			
+			<label>
+				<input type="radio" v-model="editPrevious" :value="true" />
+				Edit last notify
+			</label>
+		</div>
   </div>
 </template>
 
