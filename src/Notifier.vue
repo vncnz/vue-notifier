@@ -133,8 +133,6 @@ export default {
 				if (newV === oldV) {
 					return
 				}
-				console.log(newV === oldV, newV, oldV)
-				// console.log('current msg changed')
 				if (this.timeout) {
 					clearTimeout(this.timeout)
 					this.timeout = null
